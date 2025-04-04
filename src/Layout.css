@@ -1,0 +1,71 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #1e1e1e; /* Fondo oscuro pero no negro */
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Contenedor principal */
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  /* Header fijo */
+  .header {
+    background: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  /* Contenedor flexible */
+  .content-wrapper {
+    display: flex;
+    flex: 1;
+    padding-top: 60px; /* Evita que el contenido quede detrás del header */
+  }
+  
+  /* Contenido principal */
+  .main-content {
+    flex: 3fr; /* Ocupa 3 partes del espacio */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    justify-content: flex-end;
+    flex: 4fr; /* Ocupa 1 parte del espacio */
+    background: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+    color: black; /* Mejora el contraste del texto */
+  }
+  
+  /* Estilos para los elementos dentro del contenido */
+  .box {
+    background: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    flex: 1 1 calc(50% - 10px); /* Ajusta el tamaño automáticamente */
+    min-height: 150px;
+    border: 3px solid black;
+  }
+  
