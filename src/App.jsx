@@ -172,5 +172,53 @@ function Carrito(){
   );
 }
 
+function FormularioRegistro(){
+  const [nombre, setNombre] = useState("");
+  const [email, setEmail] = useState("");
+  const [mensaje, setMensaje] = useState("");
 
-export default Carrito;
+  const manejarEnvio = (e) => {
+    e.preventDefault();
+    setMensaje(`¡Bienvenido, ${nombre}! Te escribiremos a ${email}`);
+    setNombre("");
+    setEmail("");
+  };
+
+  return (
+    <div style={{maxWidth:"400px", margin:"auto", padding:"20px"}}>
+      <h2>Formulario de Registro</h2>
+      <form onSubmit={manejarEnvio}>
+        <div style={{marginBottom:"10px"}}>
+          <label>Nombre:</label><br />
+          <input
+            type="text"
+            value={nombre}
+            onChange={(e)=> setNombre(e.target.value)}
+          />
+        </div>
+
+        <div style={{ marginBottom: "10 px"}}>
+          <label>Email:</label><br />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+        </div>
+
+        <button style={ {type:"submit", background:"grey"}}>Enviar</button>
+      </form>
+
+      {mensaje && (
+        <p style={{marginTop:"20px", color:"green"}}>{mensaje}</p>
+      )}
+
+    </div>
+  );
+}
+
+
+
+
+export default FormularioRegistro;
