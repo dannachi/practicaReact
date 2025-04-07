@@ -1,6 +1,7 @@
 import React from "react";
 import "./Layout.css"; // Importamos los estilos
 import { useState, useEffect, useRef} from "react";
+import ProductoCard from "./ProductoCard";
 
 const saludo = "Hola Daniel, sos el más grande desarrollador frontEnd que jamas haya existido, alto capo!";
 const nombre = "Daniel Rodriguez Sanchez"
@@ -133,6 +134,43 @@ function ListaTareas(){
 
 }
 
-export default function App(){
-  return <ListaTareas />;
+function Carrito(){
+  const productos = [
+    {id: 1, nombre:"Laptop", precio: 3500},
+    {id: 2, nombre:"Audifonos", precio: 300},
+    {id: 3, nombre:"Mouse", precio: 120}
+  ];
+
+  const [carrito, setCarrito] = useState([]);
+
+  const agregarAlCarrito = (producto) => {
+    setCarrito([...carrito, producto]);
+  };
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <h2>Tienda</h2>
+      {productos.map((p)=>(
+        <ProductoCard
+          key={p.id}
+          nombre={p.nombre}
+          precio={p.precio}
+          onAgregar={()=>agregarAlCarrito(p)}
+        />
+      ))}
+
+      <h3>Carrito ({carrito.length})</h3>
+      <ul>
+        {carrito.map((item, index) => (
+          <li key={index}>
+              {item.nombre} - ${item.precio}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+  );
 }
+
+
+export default Carrito;
